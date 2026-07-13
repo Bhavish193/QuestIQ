@@ -93,7 +93,7 @@ npm run dev
 Open
 
 ```
-http://localhost:5173
+http://localhost:5174
 ```
 
 ---
@@ -129,7 +129,7 @@ Scores are stored using **Local Storage**, allowing users to keep track of their
 
 **Bhavish Singh**
 
-GitHub: https://github.com/yourusername
+GitHub: https://github.com/Bhavish193
 
 ---
 
