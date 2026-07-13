@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --primary: #6e25d4;
+    --primary-hover: #4B3DDB;
+
+    --background: #F5F7FC;
+    --surface: #FFFFFF;
+
+    --text: #1F2937;
+    --text-light: #64748B;
+
+    --border: #E2E8F0;
+    height: 100%;
+    --shadow: 0 8px 25px rgba(0,0,0,.06);
+}
+
+html,body, #root {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #d7dff7;
+    color: #1f2937;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
