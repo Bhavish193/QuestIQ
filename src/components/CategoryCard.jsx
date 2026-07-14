@@ -10,14 +10,18 @@ function CategoryCard({ category }) {
     const [showModal, setShowModal] = useState(false);
 
     function startQuiz(playerName) {
-        console.log("Starting quiz for:", playerName);
+        console.log("Player:", playerName);
+        console.log("Category:", category);
 
         navigate("/quiz", {
             state: {
                 category: {
                     id: category.id,
                     name: category.name,
-                    questions: category.questions
+                    subtitle: category.subtitle,
+                    questions: category.questions,
+                    api: category.api,
+                    apiCategory: category.apiCategory
                 },
                 playerName
             }
@@ -39,17 +43,7 @@ function CategoryCard({ category }) {
                 <h2>{category.name}</h2>
 
                 <span className="category-tag">
-
-                    {
-                        category.name === "HTML"
-                            ? "Markup Language"
-                            : category.name === "CSS"
-                            ? "Styling"
-                            : category.name === "JavaScript"
-                            ? "Programming"
-                            : "Frontend Library"
-                    }
-
+                    {category.subtitle}
                 </span>
 
                 <div className="category-divider"></div>

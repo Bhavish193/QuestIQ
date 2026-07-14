@@ -35,23 +35,27 @@ function Categories() {
                     <h1>Select Your Quiz Category</h1>
 
                     <p>
-                        Pick your favorite technology and challenge yourself.
+                        Pick your favorite category and challenge yourself.
                     </p>
 
                 </div>
 
-                <section className="categories-grid">
+                <div className="categories-slider">
 
-                    {categories.map((category,index)=>(
+                    <section className="categories-grid">
 
-                        <CategoryCard
-                            key={index}
-                            category={category}
-                        />
+                        {categories.map((category, index) => (
 
-                    ))}
+                            <CategoryCard
+                                key={index}
+                                category={category}
+                            />
 
-                </section>
+                        ))}
+
+                    </section>
+
+                </div>
 
             </main>
 

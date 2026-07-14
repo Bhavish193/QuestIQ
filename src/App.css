@@ -310,39 +310,55 @@
     color:#64748b;
     font-size:1.1rem;
 }
+.categories-slider{
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-behavior:smooth;
+    padding-bottom:1rem;
+    margin-top:3rem;
+}
+.categories-slider::-webkit-scrollbar{
+    display:none;
+}
 .categories-grid{
-    width:100%;
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
     gap:2rem;
-    position:relative;
-    z-index:2;
+    width:max-content;
 }
 .category-card{
     position:relative;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:2.4rem 2rem;
+
+    width:240px;
+    min-height:350px;
+
+    padding:2rem 1.8rem;
+
+    flex-shrink:0;
+
     border-radius:28px;
+
     background:rgba(255,255,255,.18);
     backdrop-filter:blur(20px);
     border:1px solid rgba(255,255,255,.35);
-    box-shadow:
-        0 20px 40px rgba(91,76,240,.12);
 
-   transition:.35s;
+    box-shadow:0 20px 40px rgba(91,76,240,.12);
+
+    transition:
+        transform .3s,
+        box-shadow .3s;
+
     overflow:hidden;
 }
 .category-card:hover{
     transform:
-        translateY(-10px)
-        scale(1.02);
-    border-color:rgba(91,76,240,.35);
+        translateY(-8px);
     box-shadow:
-        0 25px 45px rgba(91,76,240,.22);
+        0 18px 40px rgba(91,76,240,.15);
 }
 .category-top{
     margin-bottom:1.5rem;
@@ -378,40 +394,44 @@
 }
 .category-card h2{
     font-size:1.8rem;
-    margin-bottom:.5rem;
+    font-weight:700;
+    text-align:center;
+    line-height:1.2;
+    min-height:58px;  
+    margin:1rem 0 .5rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 .category-tag{
     color:#6b7280;
     font-size:.95rem;
-    margin-bottom:1.8rem;
+    margin-bottom:1rem;
 }
 .category-divider{
     width:70%;
     height:1px;
     background:rgba(91,76,240,.15);
-    margin-bottom:1.5rem;
+    margin:1rem 0;
 }
 .category-card p{
     color:#6b7280;
-    margin-bottom:2rem;
+    margin-bottom:1rem;
 }
 .category-btn{
     width:100%;
     padding:1rem;
+
+    margin-top:auto;
+
     border:none;
     border-radius:14px;
-    background:linear-gradient(
-        135deg,
-        #6e25d4,
-        #5B4CF0
-    );
-    color:white;
+
+    background:linear-gradient(135deg,#6e25d4,#5B4CF0);
+
+    color:#fff;
     font-size:1rem;
     font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-    box-shadow:
-        0 12px 30px rgba(91,76,240,.25);
 }
 .category-btn:hover{
     transform:translateY(-3px);
@@ -430,6 +450,7 @@
     margin:4rem auto;
     padding:2rem;
 }
+
 .quiz-icons{
     position:absolute;
     inset:0;
@@ -587,8 +608,8 @@
     overflow:hidden;
 }
 .result-card{
-    width:700px;
-    max-width:100%;
+    width:520px;
+    min-width:520px;
     padding:2rem;
     text-align:center;
     border-radius:30px;
@@ -1051,12 +1072,18 @@ button *{
 }
 
 .review-section{
-    width:900px;
-    max-width:100%;
-    margin:3rem auto 0;
-
+    flex:1;
+    margin-left:2rem;
+    max-height:750px;
+    overflow-y:auto;
+    padding-right:.5rem;
 }
-
+.review-section h2{
+    margin-bottom:1.5rem;
+    font-size:2rem;
+    font-weight:700;
+    color:#1f2937;
+}
 .review-card {
     background: white;
     padding: 1.5rem;
@@ -1286,7 +1313,6 @@ button *{
 
     width:46px;
     height:46px;
-
     border-radius:50%;
 
     display:flex;

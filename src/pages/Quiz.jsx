@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { questions } from "../data/questions";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Timer from "../components/Timer";
 
-import { questions } from "../data/questions";
+import { fetchQuestions } from "../services/api";
 import {
     FaHtml5,
     FaCss3Alt,
@@ -22,17 +22,49 @@ function Quiz() {
 
     const { category, playerName } = location.state;
 
-    const quizQuestions = questions[category.name];
-
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState("");
+    
     const [score, setScore] = useState(0);
     const [userAnswers, setUserAnswers] = useState([]);
+    
     const [timeLeft, setTimeLeft] = useState(15);
-    const progress = (currentQuestion / quizQuestions.length) * 100;
+    const [quizQuestions, setQuizQuestions] = useState([]);
+    
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    const progress =
+    quizQuestions.length > 0
+        ? (currentQuestion / quizQuestions.length) * 100
+        : 0;
+
     useEffect(() => {
-        setTimeLeft(15);
-    }, [currentQuestion]);
+        async function loadQuestions() {
+            try {
+                setLoading(true);
+                if (category.api) {
+                    const data = await fetchQuestions(
+                        5,
+                        category.apiCategory
+                    );
+                    setQuizQuestions(data);
+                } else {
+                    setQuizQuestions(
+                        questions[category.name]
+                    );
+                }
+            }
+            catch (err) {
+                console.error("API Error:", err);
+                setError(err.message);
+            }
+            finally {
+                setLoading(false);
+            }
+        }
+        loadQuestions();
+    }, [category]);
 
     function handleTimeUp() {
         nextQuestion(true);
@@ -96,6 +128,28 @@ function Quiz() {
 
         }
     }
+    if (loading) {
+        return (
+            <>
+                <Navbar />
+                <main className="quiz-page">
+                    <h2>Loading Questions...</h2>
+                </main>
+                <Footer />
+            </>
+        );
+    }
+    if (error) {
+        return (
+            <>
+                <Navbar />
+                <main className="quiz-page">
+                    <h2>{error}</h2>
+                </main>
+                <Footer />
+            </>
+        );
+    }
 
     return (
         <>
@@ -142,7 +196,7 @@ function Quiz() {
                         </div>
 
                         <p className="progress-text">
-                            {progress}% Completed
+                            {Math.round(progress)}% Completed
                         </p>
 
                         <h3>

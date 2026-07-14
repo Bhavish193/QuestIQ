@@ -15,9 +15,9 @@ import ConfirmModal from "../components/ConfirmModal";
 function Leaderboard() {
 
     const [showModal, setShowModal] = useState(false);
-
-    const leaderboard =
-        JSON.parse(localStorage.getItem("leaderboard")) || [];
+    const [leaderboard, setLeaderboard] = useState(
+        JSON.parse(localStorage.getItem("leaderboard")) || []
+    );
 
     leaderboard.sort((a, b) => {
 
@@ -29,12 +29,9 @@ function Leaderboard() {
     });
 
     function clearLeaderboard() {
-
         localStorage.removeItem("leaderboard");
-
+        setLeaderboard([]);
         setShowModal(false);
-
-        window.location.reload();
     }
 
     return (
