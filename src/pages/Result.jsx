@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 function Result() {
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     const {
         playerName,
@@ -20,82 +21,11 @@ function Result() {
     return (
         <>
             <Navbar />
-
             <main className="result-page">
-
-                <h1>
-                    {
-                        score === totalQuestions
-                            ? "🏆 Perfect Score!"
-                            : score >= totalQuestions * 0.8
-                            ? "🎉 Great Job!"
-                            : score >= totalQuestions * 0.5
-                            ? "👍 Good Effort!"
-                            : score > 0
-                            ? "📚 Keep Practicing!"
-                            : "💪 Don't Give Up!"
-                    }
-                </h1>
-
-                <h3>
-                    {
-                        score === totalQuestions
-                            ? `Outstanding, ${playerName}!`
-                            : score >= totalQuestions * 0.8
-                            ? `Excellent work, ${playerName}!`
-                            : score >= totalQuestions * 0.5
-                            ? `Nice try, ${playerName}!`
-                            : score > 0
-                            ? `${playerName}, you'll do even better next time!`
-                            : `${playerName}, every expert starts as a beginner.`
-                    }
-                </h3>
-                <h2>{category} Quiz</h2>
-
-                <p>
-                    You scored
-                </p>
-
-                <h1>
-                    {score} / {totalQuestions}
-                </h1>
-                <h3>
-                    {Math.round((score / totalQuestions) * 100)}%
-                </h3>
-
-                <p className="feedback">
-                {
-                    score === totalQuestions
-                        ? "You answered every question correctly. Amazing work!"
-                        : score >= totalQuestions * 0.8
-                        ? "You have a strong understanding of this topic."
-                        : score >= totalQuestions * 0.5
-                        ? "You're getting there. A little more practice will help."
-                        : score > 0
-                        ? "Review the answers and try again to improve your score."
-                        : "Everyone starts somewhere. Review the quiz and give it another shot!"
-                }
-
-                </p>
-
-                <div className="result-buttons">
-                    <button
-                        onClick={() => setShowReview(!showReview)}
-                    >
-                        {showReview ? "Hide Review" : "Review Answers"}
-                    </button>
-
-                    <Link to="/">
-                        <button>
-                            Back to Home
-                        </button>
-                    </Link>
-
-                </div>
-
-                {
-                    showReview && (
-
+                <div className="result-glow glow-left"></div>
+                <div className="result-glow glow-right"></div>
+                <div className="result-card">
+                    {showReview && (
                         <div className="review-section">
 
                             <h2>Answer Review</h2>
@@ -112,14 +42,11 @@ function Result() {
                                     </h3>
 
                                     <p>
-                                        <strong>Question:</strong>
-                                        <br />
-                                        {answer.question}
+                                        <strong>Q:</strong> {answer.question}
                                     </p>
 
                                     <p>
-                                        <strong>Your Answer:</strong>
-                                        <br />
+                                        <strong>Your Answer:</strong>{" "}
 
                                         <span
                                             className={
@@ -133,23 +60,14 @@ function Result() {
 
                                     </p>
 
-                                    {
-                                        answer.selected !== answer.correct && (
+                                    <p>
+                                        <strong>Correct Answer:</strong>{" "}
 
-                                            <p>
+                                        <span className="correct-answer">
+                                            {answer.correct}
+                                        </span>
 
-                                                <strong>Correct Answer:</strong>
-
-                                                <br />
-
-                                                <span className="correct-answer">
-                                                    {answer.correct}
-                                                </span>
-
-                                            </p>
-
-                                        )
-                                    }
+                                    </p>
 
                                 </div>
 
@@ -157,11 +75,89 @@ function Result() {
 
                         </div>
 
-                    )
-                }
+                    )}
+
+                    <h1>🎉 Congratulations!</h1>
+
+                    <p className="result-category">
+                        {category} Quiz Completed
+                    </p>
+
+                    <div className="score-panel">
+                        <h2 className="score-percent">
+                            {Math.round((score / totalQuestions) * 100)}%
+                        </h2>
+                        
+                        <span className="score-value">
+                            {score} / {totalQuestions}
+                        </span>
+
+                        <h3 className="feedback-title">
+                            {
+                                score === totalQuestions
+                                    ? "🏆 Perfect Score!"
+                                    : score >= totalQuestions * 0.8
+                                    ? "🎉 Great Job!"
+                                    : score >= totalQuestions * 0.5
+                                    ? "👍 Good Effort!"
+                                    : score > 0
+                                    ? "📚 Keep Practicing!"
+                                    : "💪 Don't Give Up!"
+                            }
+                        </h3>
+
+                    </div>
+                    <div className="result-stats">
+
+                        <div className="stat-box">
+                            <h3>✔</h3>
+                            <span>Correct</span>
+                            <strong>{score}</strong>
+                        </div>
+
+                        <div className="stat-box">
+                            <h3>✖</h3>
+                            <span>Wrong</span>
+                            <strong>{totalQuestions - score}</strong>
+                        </div>
+
+                        <div className="stat-box">
+                            <h3>📚</h3>
+                            <span>Questions</span>
+                            <strong>{totalQuestions}</strong>
+                        </div>
+
+                    </div>
+
+                    <div className="result-buttons">
+
+                        <button
+                            onClick={() => setShowReview(true)}
+                        >
+                            Review Answers
+                        </button>
+
+                        <button
+                            className="glass-btn"
+                            onClick={() => navigate("/")}
+                        >
+                            Home
+                        </button>
+
+                        <button
+                            className="glass-btn"
+                            onClick={() =>
+                                navigate("/categories")
+                            }
+                        >
+                            Retry
+                        </button>
+
+                    </div>
+
+                </div>
 
             </main>
-
             <Footer />
         </>
     );

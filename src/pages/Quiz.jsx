@@ -6,6 +6,15 @@ import Footer from "../components/Footer";
 import Timer from "../components/Timer";
 
 import { questions } from "../data/questions";
+import {
+    FaHtml5,
+    FaCss3Alt,
+    FaJsSquare,
+    FaReact,
+    FaCode,
+    FaBrain,
+    FaTrophy
+} from "react-icons/fa";
 
 function Quiz() {
     const location = useLocation();
@@ -20,7 +29,7 @@ function Quiz() {
     const [score, setScore] = useState(0);
     const [userAnswers, setUserAnswers] = useState([]);
     const [timeLeft, setTimeLeft] = useState(15);
-
+    const progress = (currentQuestion / quizQuestions.length) * 100;
     useEffect(() => {
         setTimeLeft(15);
     }, [currentQuestion]);
@@ -92,64 +101,88 @@ function Quiz() {
         <>
             <Navbar />
 
-            <main className="quiz-page">
+            <main className="quiz-wrapper">
 
-                <h1>{category.name} Quiz</h1>
-
-                <h2>
-                    Question {currentQuestion + 1} of {quizQuestions.length}
-                </h2>
-
-                <Timer
-                    timeLeft={timeLeft}
-                    setTimeLeft={setTimeLeft}
-                    onTimeUp={handleTimeUp}
-                />
-
-                <div className="progress-bar">
-                    <div
-                        className="progress-fill"
-                        style={{
-                            width: `${(currentQuestion / quizQuestions.length) * 100}%`
-                        }}
-                    ></div>
+                <div className="quiz-icons">
+                    <FaHtml5 className="bg-icon html-bg" />
+                    <FaCss3Alt className="bg-icon css-bg" />
+                    <FaCode className="bg-icon code-bg" />
+                    <FaTrophy className="bg-icon trophy-bg" />
+                    <FaJsSquare className="bg-icon js-bg" />
+                    <FaBrain className="bg-icon brain-bg" />
+                    <FaReact className="bg-icon react-bg" />
                 </div>
 
-                <p className="progress-text">
-                    {Math.round((currentQuestion / quizQuestions.length) * 100)}% Completed
-                </p>
-                <h3>
-                    {quizQuestions[currentQuestion].question}
-                </h3>
+                <div className="quiz-glow glow-left"></div>
+                <div className="quiz-glow glow-right"></div>
 
-                <div className="options">
+                <section className="quiz-page">
 
-                    {quizQuestions[currentQuestion].options.map((option, index) => (
+                    <div className="quiz-container">
+
+                        <h1>{category.name} Quiz</h1>
+
+                        <h2>
+                            Question {currentQuestion + 1} of {quizQuestions.length}
+                        </h2>
+
+                        <Timer
+                            timeLeft={timeLeft}
+                            setTimeLeft={setTimeLeft}
+                            onTimeUp={handleTimeUp}
+                        />
+
+                        <div className="progress-bar">
+                            <div
+                                className="progress-fill"
+                                style={{
+                                    width: `${progress}%`
+                                }}
+                            ></div>
+                        </div>
+
+                        <p className="progress-text">
+                            {progress}% Completed
+                        </p>
+
+                        <h3>
+                            {quizQuestions[currentQuestion].question}
+                        </h3>
+
+                        <div className="options">
+
+                            {quizQuestions[currentQuestion].options.map(
+                                (option, index) => (
+
+                                    <button
+                                        key={index}
+                                        className={
+                                            selectedAnswer === option
+                                                ? "option selected"
+                                                : "option"
+                                        }
+                                        onClick={() => setSelectedAnswer(option)}
+                                    >
+                                        {option}
+                                    </button>
+
+                                )
+                            )}
+
+                        </div>
 
                         <button
-                            key={index}
-                            className={
-                                selectedAnswer === option
-                                    ? "option selected"
-                                    : "option"
-                            }
-                            onClick={() => setSelectedAnswer(option)}
+                            className="next-btn"
+                            onClick={nextQuestion}
                         >
-                            {option}
+                            {currentQuestion === quizQuestions.length - 1
+                                ? "Finish Quiz"
+                                : "Next Question"}
                         </button>
 
-                    ))}
+                    </div>
 
-                </div>
-
-                <button
-                    className="next-btn"
-                    onClick={nextQuestion}
-                >
-                    {currentQuestion === quizQuestions.length - 1
-                        ? "Finish Quiz"
-                        : "Next Question"}
-                </button>
+                </section>
 
             </main>
 

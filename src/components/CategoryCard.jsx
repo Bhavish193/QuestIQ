@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { FaHtml5, FaCss3Alt, FaJs, FaReact } from "react-icons/fa";
+import { useState } from "react";
 
 import NameModal from "./NameModal";
 
@@ -10,78 +8,68 @@ function CategoryCard({ category }) {
     const navigate = useNavigate();
 
     const [showModal, setShowModal] = useState(false);
-    const [playerName, setPlayerName] = useState("");
 
-    const getIcon = () => {
-        switch (category.name) {
-            case "HTML":
-                return <FaHtml5 />;
-
-            case "CSS":
-                return <FaCss3Alt />;
-
-            case "JavaScript":
-                return <FaJs />;
-
-            case "React":
-                return <FaReact />;
-
-            default:
-                return null;
-        }
-    };
-
-    function startQuiz() {
-
-        if (playerName.trim() === "") {
-            alert("Please enter your name.");
-            return;
-        }
+    function startQuiz(playerName) {
+        console.log("Starting quiz for:", playerName);
 
         navigate("/quiz", {
             state: {
-                category,
+                category: {
+                    id: category.id,
+                    name: category.name,
+                    questions: category.questions
+                },
                 playerName
             }
         });
-
     }
 
     return (
         <>
             <div className="category-card">
 
-                <div className="category-icon">
-                    {getIcon()}
+                <div className="category-top">
+
+                    <div className="category-icon">
+                        {category.icon}
+                    </div>
+
                 </div>
 
                 <h2>{category.name}</h2>
 
+                <span className="category-tag">
+
+                    {
+                        category.name === "HTML"
+                            ? "Markup Language"
+                            : category.name === "CSS"
+                            ? "Styling"
+                            : category.name === "JavaScript"
+                            ? "Programming"
+                            : "Frontend Library"
+                    }
+
+                </span>
+
+                <div className="category-divider"></div>
+
                 <p>{category.questions} Questions</p>
 
-                <button onClick={() => setShowModal(true)}>
-                    Start Quiz
+                <button
+                    className="category-btn"
+                    onClick={() => setShowModal(true)}
+                >
+                    Start Quiz →
                 </button>
 
             </div>
 
-            {
-                showModal && (
-
-                    <NameModal
-
-                        playerName={playerName}
-
-                        setPlayerName={setPlayerName}
-
-                        onStart={startQuiz}
-
-                        onCancel={() => setShowModal(false)}
-
-                    />
-
-                )
-            }
+            <NameModal
+                isOpen={showModal}
+                onClose={() => setShowModal(false)}
+                onStart={startQuiz}
+            />
 
         </>
     );
