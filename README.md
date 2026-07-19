@@ -1,6 +1,6 @@
 # ⚡ QuestIQ
 
-A modern and responsive quiz application built with **React**. Challenge your knowledge across multiple web development categories, track your score, review your answers, and compete on the leaderboard.
+A modern and responsive quiz application built with **React** that lets users test their knowledge across multiple categories. QuestIQ features timed quizzes, animated UI, answer review, and a local leaderboard for tracking scores.
 
 ---
 
@@ -10,42 +10,81 @@ A modern and responsive quiz application built with **React**. Challenge your kn
 
 ---
 
+## 🌐 Live Demo
+
+https://quest-iq-kohl.vercel.app/
+
+---
+
 ## ✨ Features
 
-- 🎯 Interactive quiz experience
-- 📚 Multiple quiz categories
-- ⏱ Timed questions
-- 📊 Live progress bar
+- 🎯 Interactive multiple-choice quizzes
+- 📚 11 quiz categories
+- 💻 Custom Web Development quizzes (HTML, CSS, JavaScript & React)
+- 🌍 Live trivia questions fetched from an API
+- ⏱ 15-second timer for every question
+- 📊 Live progress indicator
+- 👤 Player name before starting a quiz
 - ✅ Instant score calculation
-- 🔍 Answer review after completion
-- 🏆 Local leaderboard
-- 💾 Persistent scores using Local Storage
-- 🌈 Modern glassmorphism UI
-- ✨ Floating animated background icons
+- 📝 Review correct and selected answers after every quiz
+- 🏆 Persistent leaderboard using Local Storage
+- ✨ Animated floating background icons
+- 🎨 Modern glassmorphism UI
 - 📱 Fully responsive design
 
 ---
 
-## 🛠 Built With
+## 📖 Quiz Categories
+
+### Custom Categories
+
+- HTML
+- CSS
+- JavaScript
+- React
+
+### API Categories
+
+- General Knowledge
+- Science
+- History
+- Movies
+- Sports
+- Music
+- Gaming
+
+---
+
+## 🛠 Tech Stack
 
 - React
-- React Router
+- React Router DOM
 - React Icons
 - JavaScript (ES6)
-- CSS3
 - HTML5
+- CSS3
 - Vite
+- The Trivia API
 
 ---
 
 ## 📂 Project Structure
 
-```
+```text
 src/
 │
+├── assets/
+│
 ├── components/
+│   ├── CategoryCard.jsx
+│   ├── Footer.jsx
+│   ├── NameModal.jsx
 │   ├── Navbar.jsx
-│   └── Footer.jsx
+│   └── Timer.jsx
+│
+├── data/
+│   ├── categories.jsx
+│   └── questions.js
 │
 ├── pages/
 │   ├── Home.jsx
@@ -54,12 +93,12 @@ src/
 │   ├── Result.jsx
 │   └── Leaderboard.jsx
 │
-├── data/
-│   └── questions.js
+├── services/
+│   └── api.js
 │
 ├── App.jsx
-├── main.jsx
-└── App.css
+├── App.css
+└── main.jsx
 ```
 
 ---
@@ -69,10 +108,10 @@ src/
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/QuestIQ.git
+git clone https://github.com/Bhavish193/QuestIQ.git
 ```
 
-Go inside the project
+Go to the project folder
 
 ```bash
 cd QuestIQ
@@ -84,7 +123,7 @@ Install dependencies
 npm install
 ```
 
-Run the development server
+Start the development server
 
 ```bash
 npm run dev
@@ -92,36 +131,40 @@ npm run dev
 
 Open
 
-```
-http://localhost:5174
+```text
+http://localhost:5173
 ```
 
 ---
 
-## 📖 Quiz Categories
+## 🎮 How It Works
 
-- HTML
-- CSS
-- JavaScript
-- React
+1. Choose a quiz category.
+2. Enter your name.
+3. Answer each question within **15 seconds**.
+4. View your final score.
+5. Review all your answers.
+6. Compare your score on the leaderboard.
 
 ---
 
 ## 🏆 Leaderboard
 
-Scores are stored using **Local Storage**, allowing users to keep track of their best performances even after refreshing the browser.
+QuestIQ stores scores in **Local Storage**, allowing users to compare previous attempts without requiring an account.
 
 ---
 
 ## 💡 Future Improvements
 
-- User Authentication
-- Difficulty Levels
-- Online Leaderboard
-- Question API Integration
-- Dark Mode
-- Sound Effects
-- Achievements & Badges
+- 🔐 User Authentication
+- 🌐 Online Database Leaderboard
+- 🎚 Difficulty Levels
+- 📈 Quiz Statistics Dashboard
+- 🌙 Dark Mode
+- 🔊 Sound Effects
+- 🏅 Achievements & Badges
+- ❤️ Favorite Categories
+- 🔀 Random Mixed Quiz Mode
 
 ---
 

@@ -45,7 +45,7 @@ function Quiz() {
                 setLoading(true);
                 if (category.api) {
                     const data = await fetchQuestions(
-                        5,
+                        10,
                         category.apiCategory
                     );
                     setQuizQuestions(data);
@@ -71,15 +71,20 @@ function Quiz() {
     }
 
     function nextQuestion(isTimeUp = false) {
-
+        console.log(
+            "NEXT",
+            {
+                question: currentQuestion,
+                timeLeft,
+                isTimeUp
+            }
+        );
         if (!isTimeUp && selectedAnswer === "") {
             alert("Please select an answer.");
             return;
         }
-
         let newScore = score;
         const current = quizQuestions[currentQuestion];
-
         const answerRecord = {
             question: current.question,
             selected: selectedAnswer || "Not Answered",
@@ -87,20 +92,17 @@ function Quiz() {
         };
 
         const updatedAnswers = [...userAnswers, answerRecord];
-
         setUserAnswers(updatedAnswers);
-
         if (selectedAnswer === current.answer) {
             newScore++;
             setScore(newScore);
         }
 
         if (currentQuestion < quizQuestions.length - 1) {
-
-            setCurrentQuestion(currentQuestion + 1);
+            setTimeLeft(15);
             setSelectedAnswer("");
-
-        } else {
+            setCurrentQuestion(prev => prev + 1);
+        }else {
              const leaderboard =
                 JSON.parse(localStorage.getItem("leaderboard")) || [];
 
@@ -110,12 +112,10 @@ function Quiz() {
                 score: newScore,
                 total: quizQuestions.length
             });
-
             localStorage.setItem(
                 "leaderboard",
                 JSON.stringify(leaderboard)
             );
-
             navigate("/result", {
                 state: {
                     playerName,
@@ -125,7 +125,6 @@ function Quiz() {
                     answers: updatedAnswers
                 }
             });
-
         }
     }
     if (loading) {
@@ -154,7 +153,6 @@ function Quiz() {
     return (
         <>
             <Navbar />
-
             <main className="quiz-wrapper">
 
                 <div className="quiz-icons">
@@ -171,21 +169,16 @@ function Quiz() {
                 <div className="quiz-glow glow-right"></div>
 
                 <section className="quiz-page">
-
                     <div className="quiz-container">
-
                         <h1>{category.name} Quiz</h1>
-
                         <h2>
                             Question {currentQuestion + 1} of {quizQuestions.length}
                         </h2>
-
                         <Timer
                             timeLeft={timeLeft}
                             setTimeLeft={setTimeLeft}
                             onTimeUp={handleTimeUp}
                         />
-
                         <div className="progress-bar">
                             <div
                                 className="progress-fill"
@@ -198,16 +191,12 @@ function Quiz() {
                         <p className="progress-text">
                             {Math.round(progress)}% Completed
                         </p>
-
                         <h3>
                             {quizQuestions[currentQuestion].question}
                         </h3>
-
                         <div className="options">
-
                             {quizQuestions[currentQuestion].options.map(
                                 (option, index) => (
-
                                     <button
                                         key={index}
                                         className={
@@ -219,12 +208,10 @@ function Quiz() {
                                     >
                                         {option}
                                     </button>
-
                                 )
                             )}
 
                         </div>
-
                         <button
                             className="next-btn"
                             onClick={nextQuestion}
@@ -233,13 +220,9 @@ function Quiz() {
                                 ? "Finish Quiz"
                                 : "Next Question"}
                         </button>
-
                     </div>
-
                 </section>
-
             </main>
-
             <Footer />
         </>
     );

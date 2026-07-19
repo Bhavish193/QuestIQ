@@ -31,40 +31,29 @@ function CategoryCard({ category }) {
     return (
         <>
             <div className="category-card">
-
                 <div className="category-top">
-
                     <div className="category-icon">
                         {category.icon}
                     </div>
-
                 </div>
-
                 <h2>{category.name}</h2>
-
                 <span className="category-tag">
                     {category.subtitle}
                 </span>
-
                 <div className="category-divider"></div>
-
                 <p>{category.questions} Questions</p>
-
                 <button
                     className="category-btn"
                     onClick={() => setShowModal(true)}
                 >
                     Start Quiz →
                 </button>
-
             </div>
-
             <NameModal
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
                 onStart={startQuiz}
             />
-
         </>
     );
 }

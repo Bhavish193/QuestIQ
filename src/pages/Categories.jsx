@@ -15,50 +15,27 @@ function Categories() {
     return (
         <>
             <Navbar />
-
             <main className="categories-page">
-
-                <div className="category-icons">
-
-                    <FaHtml5 className="bg-icon html-bg" />
-                    <FaCss3Alt className="bg-icon css-bg" />
-                    <FaJsSquare className="bg-icon js-bg" />
-                    <FaReact className="bg-icon react-bg" />
-                    <FaCode className="bg-icon code-bg" />
-                    <FaTrophy className="bg-icon trophy-bg" />
-                    <FaBrain className="bg-icon brain-bg" />
-
-                </div>
-
                 <div className="categories-header">
-
+                    <div className="glow glow1"></div>
+                    <div className="glow glow2"></div>
+                    <div className="glow glow3"></div>
                     <h1>Select Your Quiz Category</h1>
-
                     <p>
                         Pick your favorite category and challenge yourself.
                     </p>
-
                 </div>
-
                 <div className="categories-slider">
-
                     <section className="categories-grid">
-
                         {categories.map((category, index) => (
-
                             <CategoryCard
                                 key={index}
                                 category={category}
                             />
-
                         ))}
-
                     </section>
-
                 </div>
-
             </main>
-
             <Footer />
         </>
     );

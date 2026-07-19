@@ -37,7 +37,6 @@ function Leaderboard() {
     return (
         <>
             <Navbar />
-
             <main className="leaderboard-wrapper">
                 <div className="leaderboard-icons">
 
@@ -55,40 +54,26 @@ function Leaderboard() {
                 <div className="leaderboard-glow glow-right"></div>
 
                 <section className="leaderboard-page">
-
                     <h1>Leaderboard</h1>
-
                     <table>
-
                         <thead>
-
                             <tr>
                                 <th>Rank</th>
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>Score</th>
                             </tr>
-
                         </thead>
-
                         <tbody>
-
                             {leaderboard.length === 0 ? (
-
                                 <tr>
-
                                     <td colSpan="4">
                                         No quiz attempts yet.
                                     </td>
-
                                 </tr>
-
                             ) : (
-
                                 leaderboard.map((player, index) => (
-
                                     <tr key={index}>
-
                                         <td>
                                             {
                                                 index === 0
@@ -100,36 +85,24 @@ function Leaderboard() {
                                                     : index + 1
                                             }
                                         </td>
-
                                         <td>{player.name}</td>
-
                                         <td>{player.category}</td>
-
                                         <td>
                                             {player.score}/{player.total}
                                         </td>
-
                                     </tr>
-
                                 ))
-
                             )}
-
                         </tbody>
-
                     </table>
-
                     <button
                         className="clear-btn"
                         onClick={() => setShowModal(true)}
                     >
                         Clear Leaderboard
                     </button>
-
                 </section>
-
             </main>
-
             <ConfirmModal
                 isOpen={showModal}
                 title="Clear Leaderboard?"
@@ -137,7 +110,6 @@ function Leaderboard() {
                 onConfirm={clearLeaderboard}
                 onCancel={() => setShowModal(false)}
             />
-
             <Footer />
         </>
     );

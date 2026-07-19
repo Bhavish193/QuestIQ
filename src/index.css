@@ -5,16 +5,12 @@
 }
 
 :root {
-
     --primary: #6e25d4;
     --primary-hover: #4B3DDB;
-
     --background: #F5F7FC;
     --surface: #FFFFFF;
-
     --text: #1F2937;
     --text-light: #64748B;
-
     --border: #E2E8F0;
     height: 100%;
     --shadow: 0 8px 25px rgba(0,0,0,.06);
@@ -41,65 +37,44 @@ button {
     font-family: inherit;
 }
 .cancel-btn{
-
     width:120px;
     height:46px;
-
     border:none;
     border-radius:10px;
-
     background:#e5e7eb;
     color:#1f2937;
-
     font-size:1rem;
     font-weight:600;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
 .cancel-btn:hover{
-
     background:#d1d5db;
-
     transform:translateY(-2px);
-
 }
 
 .danger-btn{
-
     width:120px;
     height:46px;
-
     border:none;
     border-radius:10px;
-
     background:linear-gradient(
         135deg,
         #6e25d4,
         #5B4CF0
     );
-
     color:white;
-
     font-size:1rem;
     font-weight:600;
-
     cursor:pointer;
-
     transition:.3s;
-
     box-shadow:
         0 10px 25px rgba(91,76,240,.25);
-
 }
 
 .danger-btn:hover{
-
     transform:translateY(-2px);
-
     box-shadow:
         0 15px 35px rgba(91,76,240,.4);
-
 }

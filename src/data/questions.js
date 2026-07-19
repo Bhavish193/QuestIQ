@@ -34,6 +34,36 @@ export const questions = {
             question: "Which HTML element creates a line break?",
             options: ["<br>", "<break>", "<lb>", "<hr>"],
             answer: "<br>"
+        },
+        {
+            id: 6,
+            question: "Which HTML tag is used to create an unordered list?",
+            options: ["<ul>", "<ol>", "<li>", "<list>"],
+            answer: "<ul>"
+        },
+        {
+            id: 7,
+            question: "Which tag contains the webpage title?",
+            options: ["<title>", "<head>", "<meta>", "<body>"],
+            answer: "<title>"
+        },
+        {
+            id: 8,
+            question: "Which HTML tag is used for table rows?",
+            options: ["<tr>", "<td>", "<table>", "<th>"],
+            answer: "<tr>"
+        },
+        {
+            id: 9,
+            question: "Which HTML element is used to create a form?",
+            options: ["<form>", "<input>", "<label>", "<fieldset>"],
+            answer: "<form>"
+        },
+        {
+            id: 10,
+            question: "Which tag is used to insert a horizontal line?",
+            options: ["<hr>", "<br>", "<line>", "<border>"],
+            answer: "<hr>"
         }
     ],
 
@@ -67,6 +97,36 @@ export const questions = {
             question: "Which property adds space inside an element?",
             options: ["padding", "margin", "spacing", "border"],
             answer: "padding"
+        },
+        {
+            id: 6,
+            question: "Which CSS property changes the font style to italic?",
+            options: ["font-style", "font-weight", "text-style", "font-family"],
+            answer: "font-style"
+        },
+        {
+            id: 7,
+            question: "Which property is used to center text?",
+            options: ["text-align", "align", "text-center", "justify-content"],
+            answer: "text-align"
+        },
+        {
+            id: 8,
+            question: "Which CSS property rounds the corners of an element?",
+            options: ["border-radius", "corner-radius", "radius", "border-style"],
+            answer: "border-radius"
+        },
+        {
+            id: 9,
+            question: "Which property controls the space outside an element?",
+            options: ["margin", "padding", "spacing", "gap"],
+            answer: "margin"
+        },
+        {
+            id: 10,
+            question: "Which CSS property changes the mouse cursor?",
+            options: ["cursor", "pointer", "mouse", "hover"],
+            answer: "cursor"
         }
     ],
 
@@ -110,6 +170,36 @@ export const questions = {
                 "convert()"
             ],
             answer: "JSON.parse()"
+        },
+        {
+            id: 6,
+            question: "Which operator is used to assign a value?",
+            options: ["=", "==", "===", "!="],
+            answer: "="
+        },
+        {
+            id: 7,
+            question: "Which method adds an item to the end of an array?",
+            options: ["push()", "pop()", "shift()", "slice()"],
+            answer: "push()"
+        },
+        {
+            id: 8,
+            question: "Which function displays a popup alert?",
+            options: ["alert()", "prompt()", "confirm()", "popup()"],
+            answer: "alert()"
+        },
+        {
+            id: 9,
+            question: "Which keyword is used to define a function?",
+            options: ["function", "func", "define", "method"],
+            answer: "function"
+        },
+        {
+            id: 10,
+            question: "Which method removes the last element from an array?",
+            options: ["pop()", "push()", "shift()", "splice()"],
+            answer: "pop()"
         }
     ],
 
@@ -168,6 +258,61 @@ export const questions = {
                 "useReducer"
             ],
             answer: "useEffect"
+        },
+        {
+            id: 6,
+            question: "Which command creates a React project with Vite?",
+            options: [
+                "npm create vite@latest",
+                "create-react-app",
+                "npm install react",
+                "npm start react"
+            ],
+            answer: "npm create vite@latest"
+        },
+        {
+            id: 7,
+            question: "Props are used to?",
+            options: [
+                "Pass data between components",
+                "Store state",
+                "Style components",
+                "Handle events"
+            ],
+            answer: "Pass data between components"
+        },
+        {
+            id: 8,
+            question: "Which hook is used to access context?",
+            options: [
+                "useContext",
+                "useEffect",
+                "useState",
+                "useRef"
+            ],
+            answer: "useContext"
+        },
+        {
+            id: 9,
+            question: "What must every React component return?",
+            options: [
+                "JSX",
+                "HTML File",
+                "JSON",
+                "CSS"
+            ],
+            answer: "JSX"
+        },
+        {
+            id: 10,
+            question: "Which attribute is used instead of 'class' in JSX?",
+            options: [
+                "className",
+                "class",
+                "cssClass",
+                "styleClass"
+            ],
+            answer: "className"
         }
     ]
 };
