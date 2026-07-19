@@ -1048,6 +1048,8 @@ button *{
     max-height:750px;
     overflow-y:auto;
     padding-right:.5rem;
+    animation: reviewFade .45s ease;
+
 }
 .review-section h2{
     margin-bottom:1.5rem;
@@ -1076,6 +1078,21 @@ button *{
 .wrong-answer {
     color: #dc2626;
     font-weight: 600;
+}
+
+.review-section{
+    animation: reviewFade .45s ease;
+}
+
+@keyframes reviewFade{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 /*STATS BAR*/
