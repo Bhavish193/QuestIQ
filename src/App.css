@@ -302,8 +302,8 @@
 .categories-page{
     position:relative;
     overflow:hidden;
-    min-height:calc(100vh - 140px);
-    padding:4rem 2rem;
+    height:calc(100vh - 90px);
+    padding:2rem 2rem;
     background:#d7dff7;
     isolation: isolate;
 }
