@@ -19,9 +19,10 @@ https://quest-iq-kohl.vercel.app/
 ## ✨ Features
 
 - 🎯 Interactive multiple-choice quizzes
-- 📚 11 quiz categories
+- 📚 Multiple quiz categories
 - 💻 Custom Web Development quizzes (HTML, CSS, JavaScript & React)
 - 🌍 Live trivia questions fetched from an API
+- 🔄 Loading and retry support for API quizzes
 - ⏱ 15-second timer for every question
 - 📊 Live progress indicator
 - 👤 Player name before starting a quiz
@@ -143,7 +144,7 @@ http://localhost:5173
 2. Enter your name.
 3. Answer each question within **15 seconds**.
 4. View your final score.
-5. Review all your answers.
+5. Review every question with the correct and your selected answer..
 6. Compare your score on the leaderboard.
 
 ---
